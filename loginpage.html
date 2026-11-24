@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: rgb(0, 191, 255);
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .login {
+            background: white;
+            padding: 30px;
+            width: 300px;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 90%;
+        }
+
+        button {
+            padding: 10px 25px;
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #message {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login">
+        <h2>Login Page</h2>
+
+        <input type="email" id="email" placeholder="Enter Email">
+        <input type="password" id="password" placeholder="Enter Password">
+
+        <button onclick="login()">Login</button>
+
+        <p id="message"></p>
+    </div>
+
+    <script>
+        // Save user details in local storage
+        localStorage.setItem("email", "user@gmail.com");
+        localStorage.setItem("password", "12345");
+
+        function login() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            let savedEmail = localStorage.getItem("email");
+            let savedPassword = localStorage.getItem("password");
+
+            let message = document.getElementById("message");
+
+            if (email === savedEmail && password === savedPassword) {
+                message.innerHTML = "Login Successful";
+                message.style.color = "green";
+            }
+            else {
+                message.innerHTML = "Invalid Email or Password";
+                message.style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+</html>
